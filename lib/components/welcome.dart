@@ -45,7 +45,7 @@ class _welcomeState extends State<welcome> {
           ElevatedButton(onPressed: () {
 
 
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>signup()));
 
           }, child: Text('Sign up'))
         ],
