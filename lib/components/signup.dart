@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/components/test.dart';
 class signup extends StatefulWidget {
   const signup({Key? key}) : super(key: key);
 
@@ -66,7 +67,7 @@ class _signupState extends State<signup> {
                 ),
                 Padding(padding: EdgeInsets.symmetric(vertical: 30)),
                 ElevatedButton(onPressed: () {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>test()));
                   }, child: Text('Sign up',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w300),))
 
                 ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/components/user/bottomNavigationbar.dart';
+import 'package:untitled/components/user/homepageUser.dart';
 
  class login extends StatefulWidget {
    const login({Key? key}) : super(key: key);
@@ -14,42 +16,47 @@ import 'package:flutter/material.dart';
    bool userpage = true;
    Widget build(BuildContext context) {
      return Scaffold(
-       body: SafeArea(child: Column(
-         children: [
-           Row(
-             children: [
-               TextButton(onPressed: () {
-                 setState(() {
-                   userpage = true;
-                 });
-               }, child: Text('User')),
-               TextButton(onPressed: () {
-                 setState(() {
-                   userpage = false;
-                 });
-               }, child: Text('Owner'))
-             ],
-           ),
-           SizedBox(height: 30,),
-           Text(userpage?'Sign up to your account':'Register your business',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-           SizedBox(height: 20,),
-           TextField(
-             decoration: InputDecoration(
-               hintText: userpage?'Your email':'Business email',
+       body: SafeArea(child: Container(
+         margin: EdgeInsets.all(30),
+         child: Column(
+           children: [
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               children: [
+                 TextButton(onPressed: () {
+                   setState(() {
+                     userpage = true;
+                   });
+                 }, child: Text('User')),
+                 TextButton(onPressed: () {
+                   setState(() {
+                     userpage = false;
+                   });
+                 }, child: Text('Owner'))
+               ],
              ),
-           ),
-           SizedBox(height: 10,),
-           TextField(
-             decoration: InputDecoration(
-               hintText: userpage?'Password':'Password',
+             SizedBox(height: 30,),
+             Text(userpage?'Log in to your account':'Log in to your business',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+             SizedBox(height: 20,),
+             TextField(
+               decoration: InputDecoration(
+                 hintText: userpage?'Your email':'Business email',
+               ),
              ),
-           ),
-           Padding(padding: EdgeInsets.symmetric(vertical: 30)),
-           ElevatedButton(onPressed: () {
+             SizedBox(height: 10,),
+             TextField(
+               decoration: InputDecoration(
+                 hintText: userpage?'Password':'Password',
+               ),
+             ),
+             Padding(padding: EdgeInsets.symmetric(vertical: 30)),
+             ElevatedButton(onPressed: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>bottomNavigationbar()));
 
-           }, child: Text('Log in',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w300),))
+             }, child: Text('Log in',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w300),))
 
-         ],
+           ],
+         ),
        )),
      );
    }
