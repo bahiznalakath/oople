@@ -1,4 +1,4 @@
-import 'package:untitled/backend/venueList.dart';
+import 'package:oopleproject/backend/venueList.dart';
 
 class venueDatamodel {
   String venueName = '';

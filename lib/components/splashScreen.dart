@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:untitled/components/welcome.dart';
+import 'package:oopleproject/components/welcome.dart';
 
 
 class splashScreen extends StatefulWidget {

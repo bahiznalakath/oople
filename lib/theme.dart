@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/components/user/bottomNavigationbar.dart';
-import 'package:untitled/components/user/homepageUser.dart';
-import 'package:untitled/components/user/settingsuser.dart';
-import 'package:untitled/components/user/transactions.dart';
-import 'package:untitled/components/user/venueDetails.dart';
+import 'package:oopleproject/components/user/bottomNavigationbar.dart';
+import 'package:oopleproject/components/user/homepageUser.dart';
+import 'package:oopleproject/components/user/settingsuser.dart';
+import 'package:oopleproject/components/user/transactions.dart';
+import 'package:oopleproject/components/user/venueDetails.dart';
 
 //double width = MediaQuery.of(context).size.width;
 

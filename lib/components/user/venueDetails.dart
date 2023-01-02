@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/backend/venueList.dart';
-import 'package:untitled/theme.dart';
+import 'package:oopleproject/backend/venueList.dart';
+import 'package:oopleproject/theme.dart';
 
 class venueDetails extends StatefulWidget {
   //const venueDetails({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/backend/datamodels/venuedatamodel.dart';
-import 'package:untitled/components/user/searchoption.dart';
-import 'package:untitled/components/user/venueDetails.dart';
-import 'package:untitled/theme.dart';
-import 'package:untitled/backend/venueList.dart';
+import 'package:oopleproject/backend/datamodels/venuedatamodel.dart';
+import 'package:oopleproject/components/user/searchoption.dart';
+import 'package:oopleproject/components/user/venueDetails.dart';
+import 'package:oopleproject/theme.dart';
+import 'package:oopleproject/backend/venueList.dart';
 
 
 class homepageUser extends StatefulWidget {
