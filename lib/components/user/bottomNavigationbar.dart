@@ -28,9 +28,9 @@ class _bottomNavigationbarState extends State<bottomNavigationbar> {
       body: _pages[_currentIndex],
       bottomNavigationBar: Container(
         child: BottomNavigationBar(items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home_rounded, color: textColor,),label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.money_rounded, color: textColor,),label: 'Transaction'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings, color: textColor,),label: 'Settings'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_rounded,),label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.money_rounded,),label: 'Transaction'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings,),label: 'Settings'),
         ],
         currentIndex: _currentIndex,
         onTap: (newIndex){
@@ -41,6 +41,7 @@ class _bottomNavigationbarState extends State<bottomNavigationbar> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
           backgroundColor: (lightTheme)?Colors.white:Colors.black,
+          selectedItemColor: Colors.blueAccent,
         ),
       ),
     );

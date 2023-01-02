@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/backend/datamodels/venuedatamodel.dart';
 import 'package:untitled/components/user/searchoption.dart';
+import 'package:untitled/components/user/venueDetails.dart';
 import 'package:untitled/theme.dart';
+import 'package:untitled/backend/venueList.dart';
 
 
 class homepageUser extends StatefulWidget {
@@ -17,12 +20,170 @@ class _homepageUserState extends State<homepageUser> {
   String sportSelected = 'football';
 
 
-
-
-
+  @override
 
 
   Widget build(BuildContext context) {
+    List<Widget> getFootballVenues() {
+      List<Widget> FootballCard = [];
+      for (int i=0; i<venueList.length; i++) {
+        if(venueList[i].venueCategory=='football')
+        FootballCard.add(
+            Column(
+              key: ValueKey(i),
+              children: [
+                Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          //venueList.removeAt(i);
+                          //print('footballcard $i deleted');
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>venueDetails(i)));
+                        });
+                      },
+                      child: Container(
+                        //padding: EdgeInsets.all(10),
+                        child: Column(
+                            children: [
+                              Container(
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20)),
+                                    child: Image(image: NetworkImage(
+                                        (venueList.length > 0) ? venueList[0]
+                                            .venueImage : ''),)),
+                              ),
+
+                              Container(
+                                color: lightTheme
+                                    ? Colors.transparent
+                                    : mainColor,
+                                padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                                height: 80,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          (venueList.length > 0) ? venueList[i]
+                                              .venueName : '', style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                            color: textColor),),
+                                      ],
+                                    ),
+                                    Padding(padding: EdgeInsets.symmetric(
+                                        vertical: 3)),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on_outlined,
+                                          color: Colors.redAccent.shade200,
+                                          size: 15,),
+                                        Text(
+                                          (venueList.length > 0) ? venueList[i]
+                                              .venueLocation : '',
+                                          style: TextStyle(
+                                              color: subColor, fontSize: 15),),
+
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ]),
+                      ),
+                    )
+                ),
+              ],
+            )
+        );
+      }
+      return FootballCard;
+    }
+
+    List<Widget> getCricketVenues() {
+      List<Widget> CricketCard = [];
+      for (int i=0; i<venueList.length; i++) {
+        if(venueList[i].venueCategory=='cricket')
+          CricketCard.add(
+              Column(
+                key: ValueKey(i),
+                children: [
+                  Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+                  Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>venueDetails(i)));
+                          });
+                        },
+                        child: Container(
+                          //padding: EdgeInsets.all(10),
+                          child: Column(
+                              children: [
+                                Container(
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20)),
+                                      child: Image(image: NetworkImage(
+                                          (venueList.length > 0) ? venueList[i]
+                                              .venueImage : ''),)),
+                                ),
+
+                                Container(
+                                  color: lightTheme
+                                      ? Colors.transparent
+                                      : mainColor,
+                                  padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
+                                  height: 80,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            (venueList.length > 0) ? venueList[i].venueName : '', style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                              color: textColor),),
+                                        ],
+                                      ),
+                                      Padding(padding: EdgeInsets.symmetric(
+                                          vertical: 3)),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined,
+                                            color: Colors.redAccent.shade200,
+                                            size: 15,),
+                                          Text(
+                                            (venueList.length > 0) ? venueList[i].venueLocation: '',
+                                            style: TextStyle(
+                                                color: subColor, fontSize: 15),),
+
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ]),
+                        ),
+                      )
+                  ),
+                ],
+              )
+          );
+      }
+      return CricketCard;
+    }
+
+
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -59,7 +220,11 @@ class _homepageUserState extends State<homepageUser> {
                             ),
                             IconButton(onPressed: () {
                               setState(() {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>searchoption()));
+                                addVenue('Lusail Stadium', 'Doha, Qatar', 'https://images.cnbctv18.com/wp-content/uploads/2022/11/Lusail-Stadium-Qatar-1-1019x573.jpg', '10000', 'football', 1);
+                                addVenue('Dubai international cricket Stadium', 'Dubai, UAE', 'https://resources.pulse.icc-cricket.com/ICC/photo/2021/09/06/ef4fba29-e51b-4797-96b7-9f98e628ee34/GettyImages-137061267.jpg', '2500', 'cricket', 2);
+                                addVenue('Stadium', 'Doha, Qatar', 'https://images.cnbctv18.com/wp-content/uploads/2022/11/Lusail-Stadium-Qatar-1-1019x573.jpg', '10000', 'football', 3);
+
+                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>searchoption()));
                               });
                             }, icon: Icon(Icons.search_rounded,color: subColor,size: 30,))
                           ],
@@ -100,6 +265,7 @@ class _homepageUserState extends State<homepageUser> {
                                     setState(() {
                                       sportSelected = 'football';
                                       print("$sportSelected selected");
+                                      print(venueList.length);
                                     });
 
 
@@ -277,216 +443,26 @@ class _homepageUserState extends State<homepageUser> {
               ),
             ),
 
+            //for(var i=0;i<venueList.length;i++)
 
 
-            if(sportSelected=='football') Expanded(
+            if(sportSelected =='football') Expanded(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
-                    children: [
-                      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              print('stadium selected');
-                            });
-                          },
-                          child: Container(
-                            //padding: EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20) ),
-                                      child: Image(image: NetworkImage('https://images.cnbctv18.com/wp-content/uploads/2022/11/Lusail-Stadium-Qatar-1-1019x573.jpg'),  )),
-                                ),
-
-                                    Container(
-                                      color: lightTheme?Colors.transparent:mainColor,
-                                      padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                                      height: 80,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text('Lusail Stadium',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: textColor),),
-                                            ],
-                                          ),
-                                          Padding(padding: EdgeInsets.symmetric(vertical: 3)),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.location_on_outlined,color: Colors.redAccent.shade200,size: 15,),
-                                              Text('Doha, Qatar',style: TextStyle(color: subColor,fontSize: 15),),
-
-                              ],
-                            ),
-                                        ],
-                                      ),
-                                    ),
-                        ]),
-                          ),
-                      )
-                      ),
-
-                      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                      Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                print('stadium selected');
-                              });
-                            },
-                            child: Container(
-                              //padding: EdgeInsets.all(10),
-                              child: Column(
-                                  children: [
-                                    Container(
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20) ),
-                                          child: Image(image: NetworkImage('https://images.cnbctv18.com/wp-content/uploads/2022/11/Lusail-Stadium-Qatar-1-1019x573.jpg'),  )),
-                                    ),
-
-                                    Container(
-                                      color: lightTheme?Colors.transparent:mainColor,
-                                      padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                                      height: 80,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text('Lusail Stadium',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: textColor),),
-                                            ],
-                                          ),
-                                          Padding(padding: EdgeInsets.symmetric(vertical: 3)),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.location_on_outlined,color: Colors.redAccent.shade200,size: 15,),
-                                              Text('Doha, Qatar',style: TextStyle(color: subColor,fontSize: 15),),
-
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                          )
-                      ),
-
-                      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                      Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                print('stadium selected');
-                              });
-                            },
-                            child: Container(
-                              //padding: EdgeInsets.all(10),
-                              child: Column(
-                                  children: [
-                                    Container(
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20) ),
-                                          child: Image(image: NetworkImage('https://images.cnbctv18.com/wp-content/uploads/2022/11/Lusail-Stadium-Qatar-1-1019x573.jpg'),  )),
-                                    ),
-
-                                    Container(
-                                      color: lightTheme?Colors.transparent:mainColor,
-                                      padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                                      height: 80,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text('Lusail Stadium',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: textColor),),
-                                            ],
-                                          ),
-                                          Padding(padding: EdgeInsets.symmetric(vertical: 3)),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.location_on_outlined,color: Colors.redAccent.shade200,size: 15,),
-                                              Text('Doha, Qatar',style: TextStyle(color: subColor,fontSize: 15),),
-
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                          )
-                      ),
-
-
-                    ],
+                      //key: ValueKey(i),
+                      children: getFootballVenues(),
                   ),
-                ),
               ),
             ),
-
+            ),
             if(sportSelected=='cricket') Expanded(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
-                    children: [
-                      Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                      Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                print('stadium selected');
-                              });
-                            },
-                            child: Container(
-                              //padding: EdgeInsets.all(10),
-                              child: Column(
-                                  children: [
-                                    Container(
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20) ),
-                                          child: Image(image: NetworkImage('https://resources.pulse.icc-cricket.com/ICC/photo/2021/09/06/ef4fba29-e51b-4797-96b7-9f98e628ee34/GettyImages-137061267.jpg'),  )),
-                                    ),
-
-                                    Container(
-                                      color: lightTheme?Colors.transparent:mainColor,
-                                      padding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                                      height: 80,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text('Dubai international cricket stadium',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: textColor),),
-                                            ],
-                                          ),
-                                          Padding(padding: EdgeInsets.symmetric(vertical: 3)),
-                                          Row(
-                                            children: [
-                                              Icon(Icons.location_on_outlined,color: Colors.redAccent.shade200,size: 15,),
-                                              Text('Dubai, UAE',style: TextStyle(color: subColor,fontSize: 15),),
-
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                          )
-                      ),
-
-
-
-
-
-                    ],
+                      children: getCricketVenues(),
                   ),
                 ),
               ),

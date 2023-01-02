@@ -19,6 +19,7 @@ class _transactionsState extends State<transactions> {
 
 
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         setState(() {
@@ -40,44 +41,36 @@ class _transactionsState extends State<transactions> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    border: (currentIndex==0)?Border(bottom: BorderSide(color: Colors.blue,width: 2)):Border(bottom: BorderSide.none),
-                  ),
-                  child: TextButton(
-                      onPressed: () {
-                    setState(() {
-                      _pageController.animateToPage(0, duration: Duration(milliseconds: 300), curve: Curves.linear);
-                    });
-                  }, child: Padding(
-                    padding: const EdgeInsets.fromLTRB(70, 0 , 70, 0),
-                    child: Text('Orders', style: TextStyle(
-                      color: currentIndex==0?Colors.blue:Colors.black26,
-                      fontSize: 15,
-                    ),),
-                  )),
+              Container(
+                width: width/2,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: (currentIndex==0)?Border(bottom: BorderSide(color: Colors.blue,width: 2)):Border(bottom: BorderSide.none),
                 ),
+                child: TextButton(
+                    onPressed: () {
+                  setState(() {
+                    _pageController.animateToPage(0, duration: Duration(milliseconds: 300), curve: Curves.linear);
+                  });
+                }, child: Text('Orders', style: TextStyle(
+                  color: currentIndex==0?Colors.blue:Colors.black26,
+                  fontSize: 15,
+                ),)),
               ),
-              Expanded(
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    border: (currentIndex==1)?Border(bottom: BorderSide(color: Colors.blue,width: 2)):Border(bottom: BorderSide.none),
-                  ),
-                  child: TextButton(onPressed: () {
-                    setState(() {
-                      _pageController.animateToPage(1, duration: Duration(milliseconds: 300), curve: Curves.linear);
-                    });
-                  }, child: Padding(
-                    padding: const EdgeInsets.fromLTRB(70, 0, 70, 0),
-                    child: Text('History', style: TextStyle(
-                        color: currentIndex==1?Colors.blue:Colors.black26,
-                      fontSize: 15,
-                    )),
-                  )),
+              Container(
+                height: 50,
+                width: width/2,
+                decoration: BoxDecoration(
+                  border: (currentIndex==1)?Border(bottom: BorderSide(color: Colors.blue,width: 2)):Border(bottom: BorderSide.none),
                 ),
+                child: TextButton(onPressed: () {
+                  setState(() {
+                    _pageController.animateToPage(1, duration: Duration(milliseconds: 300), curve: Curves.linear);
+                  });
+                }, child: Text('History', style: TextStyle(
+                    color: currentIndex==1?Colors.blue:Colors.black26,
+                  fontSize: 15,
+                ))),
               ),
             ],
           ),
@@ -140,7 +133,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -148,7 +141,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -162,7 +155,6 @@ class _transactionsState extends State<transactions> {
                                   ),
                                 )
                             ),
-
                             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                             Card(
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -205,7 +197,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -213,7 +205,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -227,7 +219,6 @@ class _transactionsState extends State<transactions> {
                                   ),
                                 )
                             ),
-
                             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                             Card(
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -270,7 +261,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -278,7 +269,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -292,6 +283,8 @@ class _transactionsState extends State<transactions> {
                                   ),
                                 )
                             ),
+
+
                           ],
                         ),
                       ),
@@ -366,7 +359,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -374,7 +367,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -388,7 +381,6 @@ class _transactionsState extends State<transactions> {
                                   ),
                                 )
                             ),
-
                             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                             Card(
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -431,7 +423,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -439,7 +431,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -453,7 +445,6 @@ class _transactionsState extends State<transactions> {
                                   ),
                                 )
                             ),
-
                             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                             Card(
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -496,7 +487,7 @@ class _transactionsState extends State<transactions> {
                                                   children: [
                                                     Icon(Icons.attach_money_rounded, size: 15, color: Colors.lime.shade800),
                                                     Text('1500 Rs', style: TextStyle(fontSize: 15),),
-                                                    SizedBox(width: 180,),
+                                                    SizedBox(width: width/2.6,),
                                                     Icon(Icons.calendar_month_rounded, size: 12),
                                                     Text('10-10-22', style: TextStyle(fontSize: 12),)
                                                   ],
@@ -504,7 +495,7 @@ class _transactionsState extends State<transactions> {
                                                 Padding(padding: EdgeInsets.symmetric(vertical: 1,)),
                                                 Row(
                                                   children: [
-                                                    SizedBox(width: 250,),
+                                                    SizedBox(width: width/1.726,),
                                                     Icon(Icons.access_time, size: 12),
                                                     Text('10 pm', style: TextStyle(fontSize: 12),)
                                                   ],
