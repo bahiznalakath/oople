@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/components/login.dart';
-import 'package:untitled/components/signup.dart';
+import 'package:oopleproject/components/login.dart';
+import 'package:oopleproject/components/signup.dart';
 
 class welcome extends StatefulWidget {
   const welcome({Key? key}) : super(key: key);
